@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useState, DOMAttributes } from "react";
 import styles from "../styles/Home.module.css";
 import { MessagePortal } from "../components/MessagePortal";
-import { MessageBasic } from "../components/MessageBasic";
-import { MessageHeadlessui } from "../components/MessageHeadlessui";
+import { ModalBasic } from "../components/ModalBasic";
+import { ModalHeadlessui } from "../components/ModalHeadlessui";
 
 const Home: NextPage = () => {
   const [open1, setOpen1] = useState<boolean>(false);
@@ -110,8 +110,13 @@ const Home: NextPage = () => {
         </footer>
       </div>
       <MessagePortal open={open1} onClick={handleModal1Close} />
-      <MessageBasic open={open2} onClick={handleModal2Close} />
-      <MessageHeadlessui open={open3} onClick={handleModal3Close} />
+      <ModalBasic open={open2} onClick={handleModal2Close} />
+      <ModalHeadlessui
+        open={open3}
+        onClick={handleModal3Close}
+        title="title"
+        message="Message headless-ui"
+      />
     </>
   );
 };

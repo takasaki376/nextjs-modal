@@ -1,5 +1,5 @@
 import type { ReactNode, VFC } from "react";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 type Props = {

@@ -5,10 +5,12 @@ import { useState, DOMAttributes } from "react";
 import styles from "../styles/Home.module.css";
 import { MessagePortal } from "../compornents/MessagePortal";
 import { MessageBasic } from "../compornents/MessageBasic";
+import { MessageHeadlessui } from "../compornents/MessageHeadlessui";
 
 const Home: NextPage = () => {
   const [open1, setOpen1] = useState<boolean>(false);
   const [open2, setOpen2] = useState<boolean>(false);
+  const [open3, setOpen3] = useState<boolean>(false);
 
   const handleModal1Click: DOMAttributes<HTMLButtonElement>["onClick"] = () => {
     setOpen1(true);
@@ -22,7 +24,12 @@ const Home: NextPage = () => {
   const handleModal2Close: DOMAttributes<HTMLButtonElement>["onClick"] = () => {
     setOpen2(false);
   };
-
+  const handleModal3Click: DOMAttributes<HTMLButtonElement>["onClick"] = () => {
+    setOpen3(true);
+  };
+  const handleModal3Close = () => {
+    setOpen3(false);
+  };
   return (
     <>
       <div className={styles.container}>
@@ -48,6 +55,9 @@ const Home: NextPage = () => {
             </button>
             <button className={styles.button} onClick={handleModal2Click}>
               モーダル画面起動
+            </button>
+            <button className={styles.button} onClick={handleModal3Click}>
+              モーダル画面(headless-ui)起動
             </button>
           </div>
           <div className={styles.grid}>
@@ -101,6 +111,7 @@ const Home: NextPage = () => {
       </div>
       <MessagePortal open={open1} onClick={handleModal1Close} />
       <MessageBasic open={open2} onClick={handleModal2Close} />
+      <MessageHeadlessui open={open3} onClick={handleModal3Close} />
     </>
   );
 };

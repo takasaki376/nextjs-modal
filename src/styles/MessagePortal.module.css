@@ -29,6 +29,7 @@
 
 .title {
   height: 24px;
+  font-weight: 700;
 }
 .message {
   min-height: 40px;

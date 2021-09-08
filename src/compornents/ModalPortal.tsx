@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 
 type Props = {
   open: boolean;
-  children?: ReactNode;
+  children: ReactNode;
 };
 
 export const ModalPortal: VFC<Props> = (props) => {

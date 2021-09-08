@@ -3,7 +3,7 @@ import styles from "../styles/MessagePortal.module.css";
 
 type Props = {
   open: boolean;
-  children?: ReactNode;
+  children: ReactNode;
 };
 
 export const ModalBasic: VFC<Props> = (props) => {

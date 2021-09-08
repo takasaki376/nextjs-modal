@@ -3,9 +3,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState, DOMAttributes } from "react";
 import styles from "../styles/Home.module.css";
-import { MessagePortal } from "../compornents/MessagePortal";
-import { MessageBasic } from "../compornents/MessageBasic";
-import { MessageHeadlessui } from "../compornents/MessageHeadlessui";
+import { MessagePortal } from "../components/MessagePortal";
+import { MessageBasic } from "../components/MessageBasic";
+import { MessageHeadlessui } from "../components/MessageHeadlessui";
 
 const Home: NextPage = () => {
   const [open1, setOpen1] = useState<boolean>(false);

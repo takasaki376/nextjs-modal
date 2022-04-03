@@ -20,6 +20,7 @@
 .modalFrame {
   display: flex;
   flex-direction: row;
+  margin: 8px;
 }
 .button {
   width: 250px;

@@ -9,20 +9,15 @@ type Props = {
   onClick: () => void;
   title: string;
   message: string;
+  position?: "top" | "left" | "right" | "bottom";
 };
 
-export const ModalHeadlessui: VFC<Props> = (props) => {
+export const ModalHeadlessuiPos: VFC<Props> = (props) => {
   return (
     <Transition.Root show={props.open} as={Fragment}>
-      <Dialog
-        static
-        className="fixed z-10 overflow-y-auto inset-0"
-        // className={styles.dialog}
-        open={props.open}
-        onClose={props.onClick}
-      >
+      <Dialog static open={props.open} onClose={props.onClick}>
         <div
-          className={cc(["text-center"])}
+          className="text-center"
           // className={styles.transitionFrame}
         >
           <Transition.Child
@@ -45,7 +40,17 @@ export const ModalHeadlessui: VFC<Props> = (props) => {
               // className={styles.dialogOverray}
             />
           </Transition.Child>
-
+          {/* <div
+            className={cc([
+              "fixed ",
+              {
+                "top-0": props.position === "top",
+                "bottom-0 ": props.position === "bottom",
+                "right-0": props.position === "right",
+                "left-0": props.position === "left",
+              },
+            ])}
+          > */}
           <span
             className="inline-block align-middle h-screen"
             // className={styles.span}
@@ -70,7 +75,16 @@ export const ModalHeadlessui: VFC<Props> = (props) => {
             // leaveTo={styles.dialogTransitionEnterFrom}
           >
             <div
-              className="inline-block bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all align-middle max-w-sm w-10/12 p-4 sm:p-6"
+              className={cc([
+                "fixed inline-block bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all align-middle max-w-sm w-10/12 p-4 sm:p-6",
+                {
+                  "top-0 right-0 left-0 mx-auto": props.position === "top",
+                  "bottom-0 right-0 left-0 mx-auto":
+                    props.position === "bottom",
+                  "right-0 top-0 bottom-0 my-auto": props.position === "right",
+                  "left-0": props.position === "left",
+                },
+              ])}
               // className={styles.mainFrame}
             >
               <div
@@ -111,6 +125,7 @@ export const ModalHeadlessui: VFC<Props> = (props) => {
               </div>
             </div>
           </Transition.Child>
+          {/* </div> */}
         </div>
       </Dialog>
     </Transition.Root>

@@ -1,16 +1,19 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useState, DOMAttributes } from "react";
 import styles from "../styles/Home.module.css";
 import { MessagePortal } from "../components/MessagePortal";
 import { ModalBasic } from "../components/ModalBasic";
 import { ModalHeadlessui } from "../components/ModalHeadlessui";
+import { ModalHeadlessuiPos } from "../components/ModalHeadlessuiPos";
 
 const Home: NextPage = () => {
   const [open1, setOpen1] = useState<boolean>(false);
   const [open2, setOpen2] = useState<boolean>(false);
   const [open3, setOpen3] = useState<boolean>(false);
+  const [open4, setOpen4] = useState<boolean>(false);
+  const [open5, setOpen5] = useState<boolean>(false);
+  const [open6, setOpen6] = useState<boolean>(false);
 
   const handleModal1Click: DOMAttributes<HTMLButtonElement>["onClick"] = () => {
     setOpen1(true);
@@ -29,6 +32,24 @@ const Home: NextPage = () => {
   };
   const handleModal3Close = () => {
     setOpen3(false);
+  };
+  const handleModal4Click: DOMAttributes<HTMLButtonElement>["onClick"] = () => {
+    setOpen4(true);
+  };
+  const handleModal4Close = () => {
+    setOpen4(false);
+  };
+  const handleModal5Click: DOMAttributes<HTMLButtonElement>["onClick"] = () => {
+    setOpen5(true);
+  };
+  const handleModal5Close = () => {
+    setOpen5(false);
+  };
+  const handleModal6Click: DOMAttributes<HTMLButtonElement>["onClick"] = () => {
+    setOpen6(true);
+  };
+  const handleModal6Close = () => {
+    setOpen6(false);
   };
   return (
     <>
@@ -60,54 +81,18 @@ const Home: NextPage = () => {
               モーダル画面(headless-ui)起動
             </button>
           </div>
-          <div className={styles.grid}>
-            <a href="https://nextjs.org/docs" className={styles.card}>
-              <h2>Documentation &rarr;</h2>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
-
-            <a href="https://nextjs.org/learn" className={styles.card}>
-              <h2>Learn &rarr;</h2>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
-
-            <a
-              href="https://github.com/vercel/next.js/tree/master/examples"
-              className={styles.card}
-            >
-              <h2>Examples &rarr;</h2>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
-
-            <a
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-            >
-              <h2>Deploy &rarr;</h2>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
+          <div className={styles.modalFrame}>
+            <button className={styles.button} onClick={handleModal4Click}>
+              モーダル画面(headless-ui)上側起動
+            </button>
+            <button className={styles.button} onClick={handleModal5Click}>
+              モーダル画面(headless-ui)下側起動
+            </button>
+            <button className={styles.button} onClick={handleModal6Click}>
+              モーダル画面(headless-ui)右側起動
+            </button>
           </div>
         </main>
-
-        <footer className={styles.footer}>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by{" "}
-            <span className={styles.logo}>
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                width={72}
-                height={16}
-              />
-            </span>
-          </a>
-        </footer>
       </div>
       <MessagePortal open={open1} onClick={handleModal1Close} />
       <ModalBasic open={open2} onClick={handleModal2Close} />
@@ -116,6 +101,27 @@ const Home: NextPage = () => {
         onClick={handleModal3Close}
         title="title"
         message="Message headless-ui"
+      />
+      <ModalHeadlessuiPos
+        open={open4}
+        onClick={handleModal4Close}
+        title="title"
+        message="Message headless-ui"
+        position="top"
+      />
+      <ModalHeadlessuiPos
+        open={open5}
+        onClick={handleModal5Close}
+        title="title"
+        message="Message headless-ui"
+        position="bottom"
+      />
+      <ModalHeadlessuiPos
+        open={open6}
+        onClick={handleModal6Close}
+        title="title"
+        message="Message headless-ui"
+        position="right"
       />
     </>
   );
